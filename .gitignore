@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+auth.json
+*.pem
+*.key
+node_modules/
+index-backup.html
+index-before-*.html
+favicon.ic
