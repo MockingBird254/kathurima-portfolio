@@ -406,29 +406,70 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-s
 </div>
 </div></section>
 
-<section id="contact"><div class="wrap">
-<div class="contact-box">
-<div class="kicker">06 / CONTACT</div>
-<h2>Have a problem <span class="gradient">worth solving?</span></h2>
-<p class="sub">Tell me what you're trying to build, fix, connect or automate.</p>
-<form id="inquiry-form">
-<div class="grid">
-<div class="field"><label for="name">Your name</label><input id="name" required placeholder="Your name"></div>
-<div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" required placeholder="Phone number"></div>
-<div class="field"><label for="category">Project type</label><select id="category"><option>Software / web application</option><option>Python / automation</option><option>React / frontend</option><option>Database / DBMS</option><option>M-Pesa / API integration</option><option>Networking / internet</option><option>Computer repair / IT support</option><option>CCTV / security</option><option>Other</option></select></div>
-<div class="field"><label for="method">Preferred contact</label><select id="method"><option>WhatsApp</option><option>Email</option><option>Phone call</option></select></div>
-</div>
-<div class="field"><label for="problem">Describe the project</label><textarea id="problem" required placeholder="What are you trying to achieve?"></textarea></div>
-<div class="field"><label for="budget">Budget (optional)</label><input id="budget" placeholder="Optional budget range"></div>
-<button class="btn primary" type="submit">Prepare inquiry ↗</button>
-<p class="note">Your email app opens with the inquiry prepared. It will not send automatically.</p>
-</form>
-<div class="actions">
-<a class="btn" href="https://wa.me/254110597272?text=Hello%20Kathurima%2C%20I%20have%20a%20technology%20inquiry." target="_blank" rel="noopener">WhatsApp ↗</a>
-<a class="btn" href="mailto:propertyradarke@gmail.com">Email ↗</a>
-</div>
-</div>
-</div></section>
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="kicker">06 / CONTACT</div>
+      <h2>Let's build something useful.</h2>
+      <p>Have a project, technical question, or collaboration idea? Send a message directly.</p>
+
+      <form name="portfolio-inquiry" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field"
+            action="/?success=true">
+        <input type="hidden" name="form-name" value="portfolio-inquiry">
+        <p hidden>
+          <label>Leave this field empty:
+            <input name="bot-field">
+          </label>
+        </p>
+
+        <div class="field">
+          <label for="visitor-name">Your name</label>
+          <input id="visitor-name" name="name" type="text"
+                 placeholder="Your name" required>
+        </div>
+
+        <div class="field">
+          <label for="visitor-email">Your email</label>
+          <input id="visitor-email" name="email" type="email"
+                 placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="inquiry-category">What is this about?</label>
+          <select id="inquiry-category" name="category" required>
+            <option value="">Choose a topic</option>
+            <option>Website development</option>
+            <option>M-Pesa integration</option>
+            <option>Networking and IT support</option>
+            <option>Property technology</option>
+            <option>Collaboration</option>
+            <option>Other inquiry</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="visitor-message">Your message</label>
+          <textarea id="visitor-message" name="message" rows="5"
+                    placeholder="Tell me what you need..." required></textarea>
+        </div>
+
+        <button class="btn primary" type="submit">Send inquiry ↗</button>
+      </form>
+
+      <p id="contact-success" class="note" hidden>
+        Your message has been submitted. Thank you for reaching out.
+      </p>
+
+      <div class="links">
+        <a class="btn"
+           href="https://wa.me/254110597272?text=Hello%20Kathurima%2C%20I%20have%20a%20technology%20inquiry."
+           target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+        <a class="btn" href="mailto:propertyradarke@gmail.com">Email instead ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer><div class="wrap footer-row">
@@ -509,23 +550,15 @@ document.getElementById("build-flow").addEventListener("click", () => {
     flows[document.getElementById("task").value];
 });
 
-document.getElementById("inquiry-form").addEventListener("submit", event => {
-  event.preventDefault();
-  const val = id => document.getElementById(id).value.trim();
-  const subject = "Portfolio inquiry - " + val("category");
-  const body = [
-    "Name: " + val("name"),
-    "Phone / WhatsApp: " + val("phone"),
-    "Project: " + val("category"),
-    "Preferred contact: " + val("method"),
-    "Budget: " + (val("budget") || "Not specified"),
-    "",
-    "Description:",
-    val("problem")
-  ].join("\n");
-  window.location.href = "mailto:propertyradarke@gmail.com?subject=" +
-    encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-});
+
 </script>
+
+<script>
+if (new URLSearchParams(window.location.search).get("success") === "true") {
+  const notice = document.getElementById("contact-success");
+  if (notice) notice.hidden = false;
+}
+</script>
+
 </body>
 </html>

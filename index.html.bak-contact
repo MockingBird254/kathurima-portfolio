@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080a12">
+<meta name="description" content="Kathurima Jr. — Developer based in Kenol, Kenya. Software, Python, React, databases, networking and automation.">
+<title>Kathurima Jr. | Developer — Kenol, Kenya</title>
+<style>
+:root {
+  --bg:#080a12;--panel:#101522;--panel2:#151d2e;
+  --cyan:#55f2ff;--violet:#ad8cff;--gold:#e2bd69;
+  --white:#eef3ff;--muted:#9ca9c2;--line:#273149;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--white);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 10% 5%,#16354a66,transparent 40%),radial-gradient(ellipse at 90% 25%,#38245a44,transparent 40%),linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:auto,auto,38px 38px,38px 38px}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:10;background:#080a12ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:900;letter-spacing:.05em}
+.brand span{color:var(--cyan)}
+.links{display:flex;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:.88rem}
+.links a:hover{color:var(--cyan)}
+.hero{min-height:76vh;display:grid;grid-template-columns:1.3fr .7fr;gap:38px;align-items:center;padding:65px 0}
+.eyebrow{color:var(--cyan);font-size:.76rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+h1{font-size:clamp(2.8rem,7vw,5.6rem);line-height:1.03;letter-spacing:-.06em;margin:18px 0}
+.gradient{background:linear-gradient(100deg,var(--cyan),var(--violet),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:660px;font-size:1.08rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:11px 16px;background:var(--panel);color:var(--white);font-weight:750;transition:.2s}
+.btn:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.btn.primary{background:var(--cyan);color:#061015;border-color:var(--cyan)}
+.btn.gold{border-color:var(--gold);color:var(--gold)}
+.note{color:var(--muted);font-size:.83rem}
+.identity{border:1px solid #55f2ff55;border-radius:24px;padding:25px;background:linear-gradient(145deg,#101b2b,#171226);box-shadow:0 0 65px #55f2ff12;text-align:center}
+.avatar{width:175px;height:175px;margin:5px auto 20px;display:block;object-fit:cover;object-position:center;border-radius:50%;border:2px solid var(--cyan);box-shadow:0 0 35px #55f2ff33;background:var(--panel2)}
+.status{display:flex;align-items:center;justify-content:center;gap:9px;color:var(--muted);font-size:.88rem}
+.dot{width:8px;height:8px;border-radius:50%;background:#69efad;box-shadow:0 0 12px #69efad}
+section{padding:65px 0}
+.section-head{margin-bottom:28px}
+.kicker{color:var(--gold);font-size:.75rem;letter-spacing:.15em;font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.2;margin:8px 0}
+h3{line-height:1.3}
+.sub{color:var(--muted);max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{min-width:0;overflow:hidden;background:linear-gradient(145deg,var(--panel),#0c101b);border:1px solid var(--line);border-radius:16px;padding:21px;transition:.25s}
+.card:hover{border-color:#55f2ff88;transform:translateY(-4px)}
+.card p{color:var(--muted);font-size:.94rem}
+.project-icon{width:58px;height:58px;display:grid;place-items:center;margin-bottom:16px;border:1px solid #55f2ff45;border-radius:16px;color:var(--cyan);background:linear-gradient(135deg,#55f2ff18,#ad8cff24);font-size:1.85rem;font-weight:800}
+.tag{display:inline-block;font-size:.72rem;color:var(--cyan);border:1px solid #55f2ff35;border-radius:6px;padding:3px 8px;margin:3px 3px 3px 0}
+.tag.gold{color:var(--gold);border-color:#e2bd6945}
+.tech-list{display:flex;gap:8px;flex-wrap:wrap}
+.photo{height:145px;margin:-21px -21px 20px;background:#101522;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:.3s}
+.card:hover .photo img{opacity:1;transform:scale(1.04)}
+.lab-layout{display:grid;grid-template-columns:220px 1fr;gap:18px}
+.lab-menu{display:flex;flex-direction:column;gap:8px}
+.lab-menu button{text-align:left;border:1px solid var(--line);border-radius:9px;padding:12px;background:var(--panel);color:var(--muted)}
+.lab-menu button.active{border-color:var(--cyan);color:var(--cyan);background:#10202b}
+.lab-panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:23px;min-height:300px}
+.tool{display:none}
+.tool.active{display:block}
+.field{display:grid;gap:6px;margin:13px 0}
+.field label{font-size:.88rem;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;min-width:0;background:#090e18;color:var(--white);border:1px solid var(--line);border-radius:8px;padding:11px}
+.field textarea{min-height:110px;resize:vertical}
+.result{margin-top:14px;border:1px solid #55f2ff35;background:#0b1721;padding:13px;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere}
+.contact-box{border:1px solid #ad8cff55;border-radius:20px;padding:clamp(20px,5vw,40px);background:linear-gradient(120deg,#101522,#19132b)}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem}
+.footer-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+[hidden]{display:none!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:48px 0;min-height:auto}.identity{max-width:430px;width:100%;margin:auto}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lab-layout{grid-template-columns:1fr}.lab-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.links{gap:10px;font-size:.8rem}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.nav{align-items:flex-start;padding:12px 0;flex-direction:column}.hero{padding-top:35px}.lab-panel{padding:16px}.avatar{width:150px;height:150px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* ===== DESIGN UPDATE ===== */
+
+/* Make the technology section more compact */
+#skills {
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+#skills .section-head {
+  margin-bottom: 20px;
+}
+#skills h2 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: -.035em;
+}
+#skills .card {
+  padding: 15px;
+  border-radius: 13px;
+}
+#skills .card h3 {
+  font-size: 1rem;
+  margin: 10px 0 6px;
+}
+#skills .card p {
+  font-size: .84rem;
+  line-height: 1.55;
+}
+#skills .project-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  margin-bottom: 10px;
+}
+
+/* Avatar: show more of the image and avoid awkward cropping */
+.avatar {
+  width: 170px;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 18px;
+  padding: 3px;
+  background: #080a12;
+  border: 1px solid #55f2ff99;
+  box-shadow: 0 0 30px #55f2ff28;
+}
+
+/* Make project and skill cards feel more modern */
+.card {
+  box-shadow: 0 8px 28px #00000018;
+}
+.card:hover .project-icon {
+  border-color: #55f2ff;
+  box-shadow: 0 0 24px #55f2ff35;
+}
+#skills .tag {
+  font-size: .68rem;
+  padding: 2px 6px;
+}
+
+/* PayPal support link in footer */
+.support-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border: 1px solid #e2bd69;
+  border-radius: 9px;
+  color: #f3d68b;
+  background: linear-gradient(135deg, #201b12, #111522);
+  font-weight: 750;
+  transition: .2s ease;
+}
+.support-link:hover {
+  color: #080a12;
+  background: #e2bd69;
+  transform: translateY(-2px);
+}
+@media(max-width:480px) {
+  .avatar {
+    width: 150px;
+    height: 180px;
+  }
+  #skills .grid {
+    gap: 11px;
+  }
+  #skills .card {
+    padding: 13px;
+  }
+  .support-link {
+    font-size: .85rem;
+  }
+}
+
+
+/* Relevant photographic icons for each technology */
+#skills .project-icon,
+#projects .project-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 15px;
+  border: 1px solid #55f2ff88;
+  background-color: #101522;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 5px 22px #0008, 0 0 15px #55f2ff12;
+  position: relative;
+  overflow: hidden;
+}
+#skills .project-icon::after,
+#projects .project-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #55f2ff22, #080a1240);
+  pointer-events: none;
+}
+
+/* Skills: match each image to its actual topic */
+#skills .card:nth-child(1) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-155506ашь-9f2f7b4a1d5a?auto=format&fit=crop&w=320&q=85");
+}
+#skills .card:nth-child(2) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=320&q=85");
+}
+#skills .card:nth-child(3) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=320&q=85");
+}
+#skills .card:nth-child(4) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1551703599-6b3e8379aa8b?auto=format&fit=crop&w=320&q=85");
+}
+#skills .card:nth-child(5) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=320&q=85");
+}
+#skills .card:nth-child(6) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=320&q=85");
+}
+
+/* Projects: topic-specific images */
+#projects .card:nth-child(1) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=320&q=85");
+}
+#projects .card:nth-child(2) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=320&q=85");
+}
+#projects .card:nth-child(3) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=320&q=85");
+}
+#projects .card:nth-child(4) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=320&q=85");
+}
+#projects .card:nth-child(5) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=320&q=85");
+}
+#projects .card:nth-child(6) .project-icon {
+  background-image: url("https://images.unsplash.com/photo-1551703599-6b3e8379aa8b?auto=format&fit=crop&w=320&q=85");
+}
+
+#skills .card:hover .project-icon,
+#projects .card:hover .project-icon {
+  border-color: #55f2ff;
+  box-shadow: 0 0 26px #55f2ff44;
+  transform: scale(1.04);
+}
+
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/avatar.jpg">
+</head>
+<body>
+<nav><div class="wrap nav">
+<a class="brand" href="#home">KATHURIMA<span>JR.</span></a>
+<div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#lab">Tech Lab</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<main>
+<section id="home"><div class="wrap hero">
+<div>
+<div class="eyebrow">Developer · Kenol, Kenya</div>
+<h1>I build.<br>I connect.<br><span class="gradient">I solve.</span></h1>
+<p class="lead">I'm Kathurima Jr., a developer based in Kenol, Kenya. I work with software, web technologies, databases, APIs, networking and automation to build practical digital solutions.</p>
+<div class="actions"><a class="btn primary" href="#projects">Explore projects ↘</a><a class="btn" href="https://wa.me/254110597272" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+<p class="note">Kenol, Kenya · Simplicity is the ultimate sophistication.</p>
+</div>
+<aside class="identity">
+<img class="avatar" src="assets/avatar.jpg" alt="Kathurima Jr. — Developer" onerror="this.hidden=true;document.getElementById('avatar-fallback').hidden=false">
+<div id="avatar-fallback" class="project-icon" style="margin:0 auto 20px;width:100px;height:100px;border-radius:50%;font-size:2.4rem" hidden>KJ</div>
+<div class="eyebrow">Independent developer</div>
+<h3>Ideas into useful systems.</h3>
+<div class="status"><span class="dot"></span> Building practical technology</div>
+<p class="note">Software · APIs · Databases · Infrastructure</p>
+</aside>
+</div></section>
+
+<section id="about"><div class="wrap">
+<div class="section-head"><div class="kicker">01 / ABOUT</div><h2>Technology with a <span class="gradient">purpose.</span></h2></div>
+<p class="lead">I focus on practical technology: developing applications, working with databases, integrating APIs, connecting devices, troubleshooting systems and simplifying repetitive work. My approach is to understand the problem first, then find a solution that is useful, maintainable and straightforward to use.</p>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<div class="section-head"><div class="kicker">02 / TECHNOLOGY STACK</div><h2>Tools for building and solving.</h2><p class="sub">Languages, frameworks, data systems and technical disciplines.</p></div>
+<div class="grid">
+<article class="card"><div class="project-icon">&lt;/&gt;</div><h3>Web Development</h3><p>Responsive websites, interactive interfaces and application workflows.</p><div class="tech-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span></div></article>
+<article class="card"><div class="project-icon">Py</div><h3>Python & Backend</h3><p>Programming, automation, backend logic and integration experiments.</p><div class="tech-list"><span class="tag">Python</span><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">REST APIs</span></div></article>
+<article class="card"><div class="project-icon">▤</div><h3>DBMS & Data</h3><p>Database concepts, structured information, queries and application data.</p><div class="tech-list"><span class="tag">DBMS</span><span class="tag">SQL</span><span class="tag">MariaDB</span><span class="tag">MySQL</span></div></article>
+<article class="card"><div class="project-icon">⌁</div><h3>Networking</h3><p>Router configuration, Wi-Fi, connectivity troubleshooting and installations.</p><div class="tech-list"><span class="tag">TCP/IP</span><span class="tag">Wi-Fi</span><span class="tag">Routers</span><span class="tag">Linux</span></div></article>
+<article class="card"><div class="project-icon">⇄</div><h3>APIs & Payments</h3><p>Application integrations, payment workflows and service communication.</p><div class="tech-list"><span class="tag">Daraja API</span><span class="tag">M-Pesa</span><span class="tag">JSON</span><span class="tag">Webhooks</span></div></article>
+<article class="card"><div class="project-icon">⚙</div><h3>Automation & IT</h3><p>Practical scripts, computer support, software troubleshooting and security technology.</p><div class="tech-list"><span class="tag">Automation</span><span class="tag">IT Support</span><span class="tag">CCTV</span><span class="tag">Termux</span></div></article>
+</div>
+</div></section>
+
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03 / SELECTED WORK</div>
+      <h2>Projects, integrations &amp; prototypes.</h2>
+      <p class="sub">A distinction between a platform being developed, an integration in use, and experimental browser tools.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+               alt="Residential property" loading="lazy">
+        </div>
+        <span class="tag">IN DEVELOPMENT</span>
+        <h3>Property Radar KE</h3>
+        <p>A property technology platform focused on practical workflows for landlords and agents, including property management and automation.</p>
+        <div class="tech-list">
+          <span class="tag">Laravel</span>
+          <span class="tag">PHP</span>
+          <span class="tag">MariaDB</span>
+        </div>
+        <p><a class="btn" href="https://propertyradarke.netlify.app/" target="_blank" rel="noopener">Visit Property Radar ↗</a></p>
+      </article>
+
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+               alt="Digital payment transaction" loading="lazy">
+        </div>
+        <span class="tag gold">IN USE</span>
+        <h3>M-Pesa Payment Integration</h3>
+        <p>An M-Pesa payment workflow for Property Radar. The live payment service is separate from the portfolio's demonstration simulator.</p>
+        <div class="tech-list">
+          <span class="tag">Daraja API</span>
+          <span class="tag">STK Push</span>
+          <span class="tag">Backend integration</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+               alt="Electronic development hardware" loading="lazy">
+        </div>
+        <span class="tag">BROWSER PROTOTYPES</span>
+        <h3>Interactive Tech Lab</h3>
+        <p>A collection of small browser-based demonstrations: IPv4 format checking, a simulated M-Pesa flow, rent calculations, connectivity guidance and workflow ideas.</p>
+        <div class="tech-list">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <p><a class="btn" href="#lab">Explore the Tech Lab ↓</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="visuals"><div class="wrap">
+<div class="section-head"><div class="kicker">04 / DIGITAL INFRASTRUCTURE</div><h2>Behind the <span class="gradient">technology.</span></h2></div>
+<div class="grid">
+<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" alt="Server infrastructure" loading="lazy"></div><h3>Infrastructure</h3><p>Servers, systems and the technology that powers applications.</p></article>
+<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Electronic circuit board" loading="lazy"></div><h3>Hardware & Systems</h3><p>Electronics, computing hardware and technical problem-solving.</p></article>
+<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80" alt="Cybersecurity technology" loading="lazy"></div><h3>Digital Security</h3><p>Exploring security technologies and responsible digital systems.</p></article>
+</div>
+</div></section>
+
+<section id="lab"><div class="wrap">
+<div class="section-head"><div class="kicker">05 / INTERACTIVE ZONE</div><h2>The <span class="gradient">Tech Lab.</span></h2><p class="sub">Browser-based tools. The M-Pesa panel is a demonstration and does not connect to your live API.</p></div>
+<div class="lab-layout">
+<div class="lab-menu">
+<button class="active" data-tool="network-tool">⌁ Network helper</button>
+<button data-tool="mpesa-tool">▣ M-Pesa demo</button>
+<button data-tool="property-tool">⌂ Rent calculator</button>
+<button data-tool="support-tool">⌕ Troubleshooting</button>
+<button data-tool="automation-tool">⚙ Automation idea</button>
+</div>
+<div class="lab-panel">
+<div class="tool active" id="network-tool">
+<h3>IPv4 address checker</h3><p class="note">Checks the format of an IPv4 address.</p>
+<div class="field"><label for="ip">IPv4 address</label><input id="ip" placeholder="192.168.0.1" inputmode="decimal"></div>
+<button class="btn primary" id="check-ip">Check address</button>
+<div class="result" id="ip-result" aria-live="polite">Enter an address to begin.</div>
+</div>
+<div class="tool" id="mpesa-tool">
+<h3>STK Push flow simulator</h3><p class="note">This demonstration does not send a real payment request.</p>
+<div class="field"><label for="mpesa-amount">Sample amount (KES)</label><input id="mpesa-amount" type="number" min="1" max="150000" value="100"></div>
+<button class="btn primary" id="simulate-payment">Simulate request</button>
+<div class="result" id="mpesa-result" aria-live="polite">Ready to simulate.</div>
+</div>
+<div class="tool" id="property-tool">
+<h3>Monthly rent calculator</h3>
+<div class="field"><label for="units">Occupied units</label><input id="units" type="number" min="0" value="5"></div>
+<div class="field"><label for="rent">Monthly rent per unit (KES)</label><input id="rent" type="number" min="0" value="8000"></div>
+<button class="btn primary" id="calculate-rent">Calculate total</button>
+<div class="result" id="rent-result" aria-live="polite">Enter values to estimate rent.</div>
+</div>
+<div class="tool" id="support-tool">
+<h3>Connectivity troubleshooting</h3>
+<div class="field"><label for="symptom">Choose a symptom</label><select id="symptom"><option value="wifi">Connected to Wi-Fi, no internet</option><option value="slow">Slow internet</option><option value="device">One device will not connect</option><option value="all">All devices are offline</option></select></div>
+<button class="btn primary" id="diagnose">Show first steps</button>
+<div class="result" id="diagnosis" aria-live="polite">Choose a symptom.</div>
+</div>
+<div class="tool" id="automation-tool">
+<h3>Automation idea builder</h3>
+<div class="field"><label for="task">Choose a task</label><select id="task"><option value="rent">Rent reminders</option><option value="support">IT support requests</option><option value="payments">Payment confirmations</option><option value="leads">Client inquiries</option></select></div>
+<button class="btn primary" id="build-flow">Build workflow</button>
+<div class="result" id="flow-result" aria-live="polite">Your workflow will appear here.</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<div class="contact-box">
+<div class="kicker">06 / CONTACT</div>
+<h2>Have a problem <span class="gradient">worth solving?</span></h2>
+<p class="sub">Tell me what you're trying to build, fix, connect or automate.</p>
+<form id="inquiry-form">
+<div class="grid">
+<div class="field"><label for="name">Your name</label><input id="name" required placeholder="Your name"></div>
+<div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" required placeholder="Phone number"></div>
+<div class="field"><label for="category">Project type</label><select id="category"><option>Software / web application</option><option>Python / automation</option><option>React / frontend</option><option>Database / DBMS</option><option>M-Pesa / API integration</option><option>Networking / internet</option><option>Computer repair / IT support</option><option>CCTV / security</option><option>Other</option></select></div>
+<div class="field"><label for="method">Preferred contact</label><select id="method"><option>WhatsApp</option><option>Email</option><option>Phone call</option></select></div>
+</div>
+<div class="field"><label for="problem">Describe the project</label><textarea id="problem" required placeholder="What are you trying to achieve?"></textarea></div>
+<div class="field"><label for="budget">Budget (optional)</label><input id="budget" placeholder="Optional budget range"></div>
+<button class="btn primary" type="submit">Prepare inquiry ↗</button>
+<p class="note">Your email app opens with the inquiry prepared. It will not send automatically.</p>
+</form>
+<div class="actions">
+<a class="btn" href="https://wa.me/254110597272?text=Hello%20Kathurima%2C%20I%20have%20a%20technology%20inquiry." target="_blank" rel="noopener">WhatsApp ↗</a>
+<a class="btn" href="mailto:propertyradarke@gmail.com">Email ↗</a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-row">
+<span>© <span id="year"></span> Kathurima Jr.</span>
+<span>Developer · Kenol, Kenya</span>
+<a href="#home">BACK TO TOP ↑</a>
+
+<a class="support-link"
+   href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=propertyradarke%40gmail.com&amp;currency_code=USD"
+   target="_blank" rel="noopener">
+   ♥ Support my work via PayPal
+</a>
+</div></footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-tool]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-tool]").forEach(b =>
+      b.classList.toggle("active", b === button));
+    document.querySelectorAll(".tool").forEach(panel =>
+      panel.classList.toggle("active", panel.id === button.dataset.tool));
+  });
+});
+
+document.getElementById("check-ip").addEventListener("click", () => {
+  const ip = document.getElementById("ip").value.trim();
+  const parts = ip.split(".");
+  const valid = parts.length === 4 && parts.every(p =>
+    /^\d{1,3}$/.test(p) && Number(p) >= 0 && Number(p) <= 255);
+  document.getElementById("ip-result").textContent = valid
+    ? ip + " has valid IPv4 formatting. This does not test reachability."
+    : "Invalid format. Enter four numbers from 0 to 255 separated by dots.";
+});
+
+document.getElementById("simulate-payment").addEventListener("click", () => {
+  const amount = Number(document.getElementById("mpesa-amount").value);
+  document.getElementById("mpesa-result").textContent =
+    Number.isFinite(amount) && amount >= 1 && amount <= 150000
+    ? "SIMULATION ONLY\nSample amount: KES " +
+      amount.toLocaleString("en-KE") +
+      "\nA real payment requires a secure backend and verified callback.\nNo STK Push was sent."
+    : "Enter an amount between KES 1 and 150,000.";
+});
+
+document.getElementById("calculate-rent").addEventListener("click", () => {
+  const units = Number(document.getElementById("units").value);
+  const rent = Number(document.getElementById("rent").value);
+  document.getElementById("rent-result").textContent =
+    Number.isInteger(units) && units >= 0 &&
+    Number.isFinite(rent) && rent >= 0
+    ? "Estimated monthly rent: KES " +
+      (units * rent).toLocaleString("en-KE") +
+      "\nBefore expenses, vacancies or unpaid rent."
+    : "Enter valid non-negative values.";
+});
+
+document.getElementById("diagnose").addEventListener("click", () => {
+  const advice = {
+    wifi:"Check other devices, router lights and the ISP connection.",
+    slow:"Test near the router, pause downloads and compare another device.",
+    device:"Toggle Wi-Fi, forget and rejoin the network, then check the IP address.",
+    all:"Check power, cables and router lights. Confirm ISP outage status."
+  };
+  document.getElementById("diagnosis").textContent =
+    advice[document.getElementById("symptom").value];
+});
+
+document.getElementById("build-flow").addEventListener("click", () => {
+  const flows = {
+    rent:"Record tenant and due date → send reminder → record payment → flag overdue accounts.",
+    support:"Collect fault details → classify issue → assign technician → update customer → close ticket.",
+    payments:"Receive trusted backend callback → verify transaction → update payment record → send receipt.",
+    leads:"Collect inquiry → categorize request → notify owner → follow up → track outcome."
+  };
+  document.getElementById("flow-result").textContent =
+    flows[document.getElementById("task").value];
+});
+
+document.getElementById("inquiry-form").addEventListener("submit", event => {
+  event.preventDefault();
+  const val = id => document.getElementById(id).value.trim();
+  const subject = "Portfolio inquiry - " + val("category");
+  const body = [
+    "Name: " + val("name"),
+    "Phone / WhatsApp: " + val("phone"),
+    "Project: " + val("category"),
+    "Preferred contact: " + val("method"),
+    "Budget: " + (val("budget") || "Not specified"),
+    "",
+    "Description:",
+    val("problem")
+  ].join("\n");
+  window.location.href = "mailto:propertyradarke@gmail.com?subject=" +
+    encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
